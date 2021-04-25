@@ -49,11 +49,11 @@ public class TicTacToeGame {
 	    System.out.println(" "+ gameBoard[7] + " | " + gameBoard[8] + " | " + gameBoard[9]);
 	    System.out.println(" ");
 	}	
-	static int desireMove(char board[],Scanner scanner){
-		int validCells[] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+	static int desireMove(char board[],Scanner sc){
+		Integer [] validCells = {1, 2, 3, 4, 5, 6, 7, 8, 9};
 	    while (true){
 	    	System.out.println("What is your next move ? (1-9)");
-	    	int index = scanner.nextInt();
+	    	int index = sc.nextInt();
 	    	if (Arrays.asList(validCells).contains(index) && isSpaceFree(board, index)){
 	    		return index;
 	    	}
@@ -62,6 +62,15 @@ public class TicTacToeGame {
 	}
 	private static boolean isSpaceFree(char[] board, int index){
 		return board[index] == ' ';
+	}
+	private static String firstPlay() {
+		int toss = (int) Math.floor(Math.random() * 10) % 2;
+		if(toss == 1) {
+			return "player";
+		}
+		else {
+			return "Computer";
+		}
 	}
 
 }
