@@ -1,14 +1,20 @@
 import java.util.Scanner;
+import java.util.Arrays;
 public class TicTacToeGame {
 	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
 		System.out.println("Welcome to Tic Tac Toe");
 		createBoard();
 		char userLetter=chooseLetter();
 		char compLetter=(userLetter =='x')?'o' :'x';
 		char show[] = createBoard();
 		showBoard(show);
+		int userMove = desireMove(show,scanner);
+	    show[userMove]=userLetter;
+	    showBoard(show);
 		
 	}	
+	
 	static char[] createBoard(){
 		char Board[] = new char[10];
 		for (int i = 0; i < Board.length; i++) {
@@ -43,4 +49,19 @@ public class TicTacToeGame {
 	    System.out.println(" "+ gameBoard[7] + " | " + gameBoard[8] + " | " + gameBoard[9]);
 	    System.out.println(" ");
 	}	
+	static int desireMove(char board[],Scanner scanner){
+		int validCells[] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+	    while (true){
+	    	System.out.println("What is your next move ? (1-9)");
+	    	int index = scanner.nextInt();
+	    	if (Arrays.asList(validCells).contains(index) && isSpaceFree(board, index)){
+	    		return index;
+	    	}
+	    }
+	    
+	}
+	private static boolean isSpaceFree(char[] board, int index){
+		return board[index] == ' ';
+	}
+
 }
