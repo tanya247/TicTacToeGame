@@ -10,8 +10,8 @@ public class TicTacToeGame {
 		char show[] = createBoard();
 		showBoard(show);
 		int userMove = desireMove(show,scanner);
-	    show[userMove]=userLetter;
-	    showBoard(show);
+	    	show[userMove]=userLetter;
+	    	showBoard(show);
 		
 	}	
 	
@@ -42,13 +42,14 @@ public class TicTacToeGame {
 	}
 	static void showBoard( char gameBoard[]){
 		System.out.println(" ");
-	    System.out.println("\n "+ gameBoard[1] + " | "+ gameBoard[2] + " | " +gameBoard[3]);
-	    System.out.println("-------------");
-	    System.out.println(" "+ gameBoard[4] + " | " + gameBoard[5] + " | " + gameBoard[6]);
-	    System.out.println("-------------");
-	    System.out.println(" "+ gameBoard[7] + " | " + gameBoard[8] + " | " + gameBoard[9]);
-	    System.out.println(" ");
+	    	System.out.println("\n "+ gameBoard[1] + " | "+ gameBoard[2] + " | " +gameBoard[3]);
+	    	System.out.println("-----------------");
+	    	System.out.println(" "+ gameBoard[4] + " | " + gameBoard[5] + " | " + gameBoard[6]);
+	    	System.out.println("-----------------");
+	    	System.out.println(" "+ gameBoard[7] + " | " + gameBoard[8] + " | " + gameBoard[9]);
+	    	System.out.println(" ");
 	}	
+<<<<<<< HEAD
 	static int desireMove(char board[],Scanner sc){
 		Integer [] validCells = {1, 2, 3, 4, 5, 6, 7, 8, 9};
 	    while (true){
@@ -56,8 +57,17 @@ public class TicTacToeGame {
 	    	int index = sc.nextInt();
 	    	if (Arrays.asList(validCells).contains(index) && isSpaceFree(board, index)){
 	    		return index;
+=======
+	static int desireMove(char board[],Scanner scanner){
+		Integer [] validCells = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+	    	while (true){
+	    		System.out.println("What is your next move ? (1-9)");
+	    		int index = scanner.nextInt();
+	    		if (Arrays.asList(validCells).contains(index) && isSpaceFree(board, index)){
+	    			return index;
+	    		}
+>>>>>>> 64a81751d77815a53d486052efd6b365c50cf692
 	    	}
-	    }
 	    
 	}
 	private static boolean isSpaceFree(char[] board, int index){
