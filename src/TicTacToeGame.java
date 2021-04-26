@@ -1,5 +1,4 @@
 import java.util.Scanner;
-import java.util.Arrays;
 public class TicTacToeGame {
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
@@ -10,8 +9,14 @@ public class TicTacToeGame {
 		char show[] = createBoard();
 		showBoard(show);
 		int userMove = desireMove(show,scanner);
-	    	show[userMove]=userLetter;
-	    	showBoard(show);
+	    show[userMove]=userLetter;
+	    showBoard(show);
+	    if(whoPlayFirst().equals("player")){
+	    	System.out.println("Player  Turns First");
+	    }
+		else{
+			System.out.println("Computer Turns First");
+		}
 		
 	}	
 	
@@ -63,5 +68,14 @@ public class TicTacToeGame {
 	 private static boolean isSpaceFree(char[] board, int index){
 		 return board[index] == ' ';
 	 }
+	 private static String whoPlayFirst() {
+			int toss = (int) Math.floor(Math.random() * 10) % 2;
+			if(toss == 1) {
+				return "player";
+			}
+			else {
+				return "Computer";
+			}
+	}
 
 }
