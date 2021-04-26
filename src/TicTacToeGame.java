@@ -54,9 +54,9 @@ public class TicTacToeGame {
 			 System.out.println("What is your next move ? (1-9");
 			 int index = scanner.nextInt();
 			 if(index > 0) {
-	            	if (index < 10 && isSpaceFree(board, index)) {
-	            		return index;
-	            	}
+	            	 	if (index < 10 && isSpaceFree(board, index)) {
+	            			return index;
+	            		}
 			 }
 		 }
 	 }
