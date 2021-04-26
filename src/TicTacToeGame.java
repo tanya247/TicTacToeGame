@@ -9,9 +9,7 @@ public class TicTacToeGame {
 		char compLetter=(userLetter =='x')?'o' :'x';
 		char show[] = createBoard();
 		showBoard(show);
-		int userMove = desireMove(show,scanner);
-	    	show[userMove]=userLetter;
-	    	showBoard(show);
+		
 		
 	}	
 	
