@@ -9,7 +9,9 @@ public class TicTacToeGame {
 		char compLetter=(userLetter =='x')?'o' :'x';
 		char show[] = createBoard();
 		showBoard(show);
-		
+		int userMove = desireMove(show,scanner);
+	    	show[userMove]=userLetter;
+	    	showBoard(show);
 		
 	}	
 	
@@ -46,6 +48,20 @@ public class TicTacToeGame {
 	    	System.out.println("----------------------");
 	    	System.out.println(" "+ gameBoard[7] + " | " + gameBoard[8] + " | " + gameBoard[9]);
 	    	System.out.println(" ");
-	}	
+	}
+	 static int desireMove(char board[],Scanner scanner){
+		 while (true){
+			 System.out.println("What is your next move ? (1-9");
+			 int index = scanner.nextInt();
+			 if(index > 0) {
+	            	if (index < 10 && isSpaceFree(board, index)) {
+	            		return index;
+	            	}
+			 }
+		 }
+	 }
+	 private static boolean isSpaceFree(char[] board, int index){
+		 return board[index] == ' ';
+	 }
 
 }
