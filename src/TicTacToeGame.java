@@ -9,11 +9,11 @@ public class TicTacToeGame {
 		char show[] = createBoard();
 		showBoard(show);
 		int userMove = desireMove(show,scanner);
-	    show[userMove]=userLetter;
-	    showBoard(show);
-	    if(whoPlayFirst().equals("player")){
-	    	System.out.println("Player  Turns First");
-	    }
+	    	show[userMove]=userLetter;
+	    	showBoard(show);
+	    	if(whoPlayFirst().equals("player")){
+	    		System.out.println("Player  Turns First");
+	    	}
 		else{
 			System.out.println("Computer Turns First");
 		}
@@ -69,13 +69,13 @@ public class TicTacToeGame {
 		 return board[index] == ' ';
 	 }
 	 private static String whoPlayFirst() {
-			int toss = (int) Math.floor(Math.random() * 10) % 2;
-			if(toss == 1) {
-				return "player";
-			}
-			else {
-				return "Computer";
-			}
+		int toss = (int) Math.floor(Math.random() * 10) % 2;
+		if(toss == 1) {
+			return "player";
+		}
+		else {
+			return "Computer";
+		}
 	}
 
 }
