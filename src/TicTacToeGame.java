@@ -24,9 +24,9 @@ public class TicTacToeGame {
 		}
 	    do{
 	    	if (turn == "player") {
-				index = desireMove(show, scanner, turn);
+				index = desireMove(show, scanner, turn , userLetter,compLetter);
 				assignValueInTheBoard(index, show, userLetter);	
-				check = checkWinAndTieCondition(show, userLetter, compLetter);
+				check = WinOrTieCondition(show, userLetter, compLetter);
 				showBoard(show);
 				if(check == true){
 					break;
@@ -36,9 +36,9 @@ public class TicTacToeGame {
 				}
 			} 
 	    	else {
-				index = desireMove(show, scanner , turn);
+				index = desireMove(show, scanner , turn,userLetter,compLetter);
 				assignValueInTheBoard(index, show, compLetter);	
-				check = checkWinAndTieCondition(show, userLetter, compLetter);
+				check = WinOrTieCondition(show, userLetter, compLetter);
 				showBoard(show);
 				if(check == true){
 					break;
@@ -86,29 +86,239 @@ public class TicTacToeGame {
 	    	System.out.println(" "+ gameBoard[7] + " | " + gameBoard[8] + " | " + gameBoard[9]);
 	    	System.out.println(" ");
 	}
-	 static int desireMove(char board[],Scanner scanner,String turn){
-		 while (true){
-			 
-			 int index;
-			 if(turn == "player"){
-				 System.out.println("What is your move ? (1-9)");
-				 index = scanner.nextInt();	 
-			 }
-			 else {
-				 index = (int) Math.floor(Math.random()* 10)%10;
-			 }
-			 if(index > 0){
-				if (index < 10 && isSpaceFree(board, index)) {
+	 static int desireMove(char board[],Scanner scanner,String turn,char userLetter, char compLetter){
+		 int index = 0;
+		 if(turn == "player") {
+				 if ((board[1] == compLetter && board[2] == compLetter) || (board[2] == compLetter && board[3] == compLetter)
+								|| (board[1] == compLetter && board[3] == compLetter)) {
+					 if ((board[1] == ' ') || (board[2] == ' ') || (board[3] == ' ')) {
+							if ((board[1] == ' '))
+								index = 1;
+							if ((board[2] == ' '))
+								index = 2;
+							if ((board[3] == ' '))
+								index = 3;
+							}
+						return index;
+					}
+					
+				else if ((board[4] == compLetter && board[5] == compLetter) || (board[5] == compLetter && board[6] == compLetter)
+								|| (board[4] == compLetter && board[6] == compLetter)) {
+					if ((board[4] == ' ') || (board[5] == ' ') || (board[6] == ' ')) {
+						if ((board[4] == ' '))
+							index = 4;
+						if ((board[5] == ' '))
+							index = 5;
+						if ((board[6] == ' '))
+							index = 6;
+						}
 					return index;
-		        }
+				}
+				else if ((board[7] == compLetter && board[8] == compLetter) || (board[8] == compLetter && board[9] == compLetter)
+								|| (board[7] == compLetter && board[9] == compLetter)) {
+					if ((board[7] == ' ') || (board[8] == ' ') || (board[9] == ' ')) {
+						if ((board[7] == ' '))
+							index = 7;
+						if ((board[8] == ' '))
+							index = 8;
+						if ((board[9] == ' '))
+							index = 9;
+						}
+					return index;
+				}
+				else if ((board[1] == compLetter && board[4] == compLetter) || (board[4] == compLetter && board[7] == compLetter)
+							|| (board[1] == compLetter && board[7] == compLetter)) {
+					
+					if ((board[1] == ' ') || (board[4] == ' ') || (board[7] == ' ')) {
+						if ((board[1] == ' '))
+							index = 1;
+						if ((board[4] == ' '))
+							index = 4;
+						if ((board[7] == ' '))
+							index = 7;
+						}
+					return index;
+					
+				}
+				else if ((board[2] == compLetter && board[5] == compLetter) || (board[5] == compLetter && board[8] == compLetter)
+							|| (board[5] == compLetter && board[8] == compLetter)) {
+					if ((board[2] == ' ') || (board[5] == ' ') || (board[8] == ' ')) {
+						if ((board[2] == ' '))
+							index = 2;
+						if ((board[5] == ' '))
+							index = 5;
+						if ((board[8] == ' '))
+							index = 8;
+						}
+					return index;
+					
+				}	
+				else if ((board[3] == compLetter && board[6] == compLetter) || (board[6] == compLetter && board[9] == compLetter)
+							|| (board[3] == compLetter && board[9] == compLetter)) {
+					if ((board[3] == ' ') || (board[6] == ' ') || (board[9] == ' ')) {
+						if ((board[3] == ' '))
+							index = 3;
+						if ((board[6] == ' '))
+							index = 6;
+						if ((board[9] == ' '))
+							index = 9;
+						}
+					return index;
+				}	
+				else if ((board[1] == compLetter && board[5] == compLetter) || (board[5] == compLetter && board[9] == compLetter)
+							|| (board[1] == compLetter && board[9] == compLetter)) {
+					if ((board[1] == ' ') || (board[5] == ' ') || (board[9] == ' ')) {
+						if ((board[1] == ' '))
+							index = 1;
+						if ((board[5] == ' '))
+							index = 5;
+						if ((board[9] == ' '))
+							index = 9;
+						}
+					return index;
+				}
+				else if ((board[3] == compLetter && board[5] == compLetter) || (board[5] == compLetter && board[7] == compLetter)
+							|| (board[7] == compLetter && board[3] == compLetter)) {
+					if ((board[3] == ' ') || (board[5] == ' ') || (board[7] == ' ')) {
+						if ((board[3] == ' '))
+							index = 3;
+						if ((board[5] == ' '))
+							index = 5;
+						if ((board[7] == ' '))
+							index = 7;
+						}
+					return index;
+					}
 				else {
-					System.out.println("Already Filled");
-					return desireMove(board,scanner,turn);
+					System.out.println("What is your move ? (1-9)");
+					index = scanner.nextInt();	 
+					if(index > 0){
+						if (index < 10 && isSpaceFree(board, index)) {
+							return index;
+						}
+						else {
+							System.out.println("Already Filled");
+							return desireMove(board,scanner,turn,userLetter,compLetter);
+						}
+					}
 				}
 			 }
-				 
+		 
+			 else {
+				 if ((board[1] == userLetter && board[2] == userLetter) || (board[2] == userLetter && board[3] == userLetter)
+							|| (board[1] == userLetter && board[3] == userLetter)) {
+
+					 if ((board[1] == ' ') || (board[2] == ' ') || (board[3] == ' ')) {
+							if ((board[1] == ' '))
+								index = 1;
+							if ((board[2] == ' '))
+								index = 2;
+							if ((board[3] == ' '))
+								index = 3;
+							}
+						return index;
+				}
+				else if ((board[4] == userLetter && board[5] == userLetter) || (board[5] == userLetter && board[6] == userLetter)
+							|| (board[4] == userLetter && board[6] == userLetter)) {
+
+					if ((board[4] == ' ') || (board[5] == ' ') || (board[6] == ' ')) {
+						if ((board[4] == ' '))
+							index = 4;
+						if ((board[5] == ' '))
+							index = 5;
+						if ((board[6] == ' '))
+							index = 6;
+						}
+					return index;
+				}
+				else if ((board[7] == userLetter && board[8] == userLetter) || (board[8] == userLetter && board[9] == userLetter)
+							|| (board[7] == userLetter && board[9] == userLetter)) {
+					if ((board[7] == ' ') || (board[8] == ' ') || (board[9] == ' ')) {
+						if ((board[7] == ' '))
+							index = 7;
+						if ((board[8] == ' '))
+							index = 8;
+						if ((board[9] == ' '))
+							index = 9;
+						}
+					return index;
+				}
+				else if ((board[1] == userLetter && board[4] == userLetter) || (board[4] == userLetter && board[7] == userLetter)
+						|| (board[1] == userLetter && board[7] == userLetter)) {
+					if ((board[1] == ' ') || (board[4] == ' ') || (board[7] == ' ')) {
+						if ((board[1] == ' '))
+							index = 1;
+						if ((board[4] == ' '))
+							index = 4;
+						if ((board[7] == ' '))
+							index = 7;
+						}
+					return index;
+				}
+				else if ((board[2] == userLetter && board[5] == userLetter) || (board[5] == userLetter && board[8] == userLetter)
+						|| (board[5] == userLetter && board[8] == userLetter)) {
+					if ((board[2] == ' ') || (board[5] == ' ') || (board[8] == ' ')) {
+						if ((board[2] == ' '))
+							index = 2;
+						if ((board[5] == ' '))
+							index = 5;
+						if ((board[8] == ' '))
+							index = 8;
+						}
+					return index;
+				}	
+				else if ((board[3] == userLetter && board[6] == userLetter) || (board[6] == userLetter && board[9] == userLetter)
+						|| (board[3] == userLetter && board[9] == userLetter)) {
+					if ((board[3] == ' ') || (board[6] == ' ') || (board[9] == ' ')) {
+						if ((board[3] == ' '))
+							index = 3;
+						if ((board[6] == ' '))
+							index = 6;
+						if ((board[9] == ' '))
+							index = 9;
+						}
+					return index;
+				}	
+				else if ((board[1] == userLetter && board[5] == userLetter) || (board[5] == userLetter && board[9] == userLetter)
+						|| (board[1] == userLetter && board[9] == userLetter)) {
+					if ((board[1] == ' ') || (board[5] == ' ') || (board[9] == ' ')) {
+						if ((board[1] == ' '))
+							index = 1;
+						if ((board[5] == ' '))
+							index = 5;
+						if ((board[9] == ' '))
+							index = 9;
+						}
+					return index;
+				}
+				else if ((board[3] == userLetter && board[5] == userLetter) || (board[5] == userLetter && board[7] == userLetter)
+						|| (board[7] == userLetter && board[3] == userLetter)) {
+					if ((board[3] == ' ') || (board[5] == ' ') || (board[7] == ' ')) {
+						if ((board[3] == ' '))
+							index = 3;
+						if ((board[5] == ' '))
+							index = 5;
+						if ((board[7] == ' '))
+							index = 7;
+						}
+					return index;
+					
+				}
+				else {
+					index = (int) Math.floor(Math.random()*10)%9;
+					if(index > 0){
+						if (index < 10 && isSpaceFree(board, index)) {
+							return index;
+						}
+						else {
+							System.out.println("Already Filled");
+							return desireMove(board,scanner,turn,userLetter,compLetter);
+						}
+					}
+			 }
 		 }
-	 }
+		 return index;
+}
 	 private static boolean isSpaceFree(char[] board, int index){
 		 return board[index] == ' ';
 	 }
@@ -125,7 +335,7 @@ public class TicTacToeGame {
 			board[index] = letter;
 			return board;
 	}
-	private static boolean checkWinAndTieCondition(char[] board, char userLetter , char compLetter) {
+	private static boolean WinOrTieCondition(char[] board, char userLetter , char compLetter) {
 		boolean check;
 		int index = 0;
 		if ((board[1] == userLetter && board[2] == userLetter && board[3] == userLetter) || (board[4] == userLetter && board[5] == userLetter && board[6] == userLetter)
@@ -166,4 +376,5 @@ public class TicTacToeGame {
 		return check;
 	}
 
+	
 }
